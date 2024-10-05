@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmexoacyhcuas"]
+[gd_scene load_steps=3 format=3 uid="uid://bmexoacyhcuas"]
 
 [ext_resource type="SpriteFrames" uid="uid://ctb1sh7u2g5xf" path="res://assets/frog/frog_sprite_frames.tres" id="1_8q304"]
+[ext_resource type="Script" path="res://scenes/frog/frog.gd" id="1_l7p2m"]
 
 [node name="frog" type="Node2D"]
+script = ExtResource("1_l7p2m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)
 scale = Vector2(4.21429, 4.21429)
 sprite_frames = ExtResource("1_8q304")
-animation = &"open"
+animation = &"idle"
