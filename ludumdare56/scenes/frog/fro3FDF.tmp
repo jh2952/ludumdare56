@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmexoacyhcuas"]
+[gd_scene load_steps=4 format=3 uid="uid://bmexoacyhcuas"]
 
 [ext_resource type="SpriteFrames" uid="uid://ctb1sh7u2g5xf" path="res://assets/frog/frog_sprite_frames.tres" id="1_8q304"]
 [ext_resource type="Script" path="res://scenes/frog/frog.gd" id="1_l7p2m"]
+[ext_resource type="PackedScene" uid="uid://dr4t7yj5ckoit" path="res://scenes/tongue/tongue.tscn" id="3_cwefn"]
 
 [node name="frog" type="Node2D"]
 script = ExtResource("1_l7p2m")
@@ -10,16 +11,7 @@ script = ExtResource("1_l7p2m")
 position = Vector2(0, 1)
 scale = Vector2(4.21429, 4.21429)
 sprite_frames = ExtResource("1_8q304")
-animation = &"open"
+animation = &"idle"
 
-[node name="TongueRegionClip" type="Control" parent="."]
-clip_contents = true
-layout_mode = 3
-anchors_preset = 0
-offset_left = -691.0
-offset_top = -1145.0
-offset_right = 731.0
-offset_bottom = 12.0
-
-[node name="TongueMarker" type="Marker2D" parent="TongueRegionClip"]
-position = Vector2(691, 1165)
+[node name="Tongue" parent="." instance=ExtResource("3_cwefn")]
+visible = false

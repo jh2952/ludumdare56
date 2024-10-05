@@ -1,3 +1,6 @@
 extends Node
 
+signal transition_into_game
 signal start_game
+signal tongue_shoot_start
+signal tongue_shoot_end
