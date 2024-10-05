@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7r7h4britdhm"]
+
+[ext_resource type="PackedScene" uid="uid://b7tt64bvrk1f4" path="res://scenes/level/level.tscn" id="1_on66x"]
+[ext_resource type="PackedScene" uid="uid://bmexoacyhcuas" path="res://scenes/frog/frog.tscn" id="2_3pou7"]
+[ext_resource type="Script" path="res://scenes/game/camera.gd" id="3_8kkee"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -5000)
+anchor_mode = 0
+limit_top = -5000
+limit_bottom = 1000
+script = ExtResource("3_8kkee")
+
+[node name="Level" parent="." instance=ExtResource("1_on66x")]
+position = Vector2(0, -1000)
+
+[node name="frog" parent="." instance=ExtResource("2_3pou7")]
+position = Vector2(530, 879)

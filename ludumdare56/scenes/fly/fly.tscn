@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://blda6v5qxadh2"]
+
+[ext_resource type="Texture2D" uid="uid://ynp425mcj50" path="res://assets/fly/fly.png" id="1_2xn01"]
+
+[node name="Fly" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_2xn01")

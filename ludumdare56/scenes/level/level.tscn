@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7tt64bvrk1f4"]
+
+[ext_resource type="Texture2D" uid="uid://doefc27fjptjv" path="res://assets/level/sky.png" id="1_5rpao"]
+[ext_resource type="Texture2D" uid="uid://oaeg5wde1m5w" path="res://assets/level/further_hill.png" id="2_jy52v"]
+[ext_resource type="Texture2D" uid="uid://dyucfrsedrj0x" path="res://assets/level/clouds.png" id="2_q1h1w"]
+[ext_resource type="Texture2D" uid="uid://bq32e2xxg22j" path="res://assets/level/closer_hill.png" id="3_4an7l"]
+[ext_resource type="Texture2D" uid="uid://btrs5k0qkd32b" path="res://assets/level/swamp.png" id="4_5awoc"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Sky" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_5rpao")
+centered = false
+
+[node name="Clouds" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.3, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds"]
+position = Vector2(-1.78814e-07, 1000)
+scale = Vector2(5, 5)
+texture = ExtResource("2_q1h1w")
+centered = false
+
+[node name="FarHill" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="FarHill"]
+position = Vector2(-1.78814e-07, 1000)
+scale = Vector2(5, 5)
+texture = ExtResource("2_jy52v")
+centered = false
+
+[node name="CloseHill" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="CloseHill"]
+position = Vector2(-1.78814e-07, 1000)
+scale = Vector2(5, 5)
+texture = ExtResource("3_4an7l")
+centered = false
+
+[node name="Swamp" type="Parallax2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Swamp"]
+position = Vector2(-1.78814e-07, 1000)
+scale = Vector2(5, 5)
+texture = ExtResource("4_5awoc")
+centered = false
