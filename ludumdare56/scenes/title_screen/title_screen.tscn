@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxk7a2p4jymuj"]
+
+[ext_resource type="Script" path="res://scenes/title_screen/title_screen.gd" id="1_sy0yr"]
+[ext_resource type="Texture2D" uid="uid://ca7ma8xl3yclr" path="res://assets/title/title.png" id="1_sytxj"]
+[ext_resource type="Texture2D" uid="uid://bc3ala1cjm5fi" path="res://assets/title/space_to_start.png" id="2_fv0fs"]
+
+[sub_resource type="Animation" id="Animation_00m1v"]
+resource_name = "flash"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/Tooltip:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.490353, 0.993782),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qmfof"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/Tooltip:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xtl86"]
+_data = {
+"RESET": SubResource("Animation_qmfof"),
+"flash": SubResource("Animation_00m1v")
+}
+
+[node name="TitleScreen" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sy0yr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Title" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_sytxj")
+
+[node name="Tooltip" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_fv0fs")
+
+[node name="TooltipFlasher" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xtl86")
+}
+autoplay = "flash"
