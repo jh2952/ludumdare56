@@ -16,6 +16,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_nfcfj")
 
 [node name="TongueTip" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="TongueTip" type="Sprite2D" parent="TongueTip"]
 position = Vector2(0, -48)
@@ -25,5 +26,8 @@ texture = ExtResource("3_40jgj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TongueTip"]
 position = Vector2(0, -47)
 shape = SubResource("RectangleShape2D_u28dd")
+
+[node name="TipMarker" type="Marker2D" parent="TongueTip"]
+position = Vector2(0, -50)
 
 [connection signal="body_entered" from="TongueTip" to="." method="_on_tongue_tip_body_entered"]

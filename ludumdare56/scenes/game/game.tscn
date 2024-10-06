@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7r7h4britdhm"]
+[gd_scene load_steps=12 format=3 uid="uid://c7r7h4britdhm"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_ditco"]
 [ext_resource type="PackedScene" uid="uid://b7tt64bvrk1f4" path="res://scenes/level/level.tscn" id="1_on66x"]
 [ext_resource type="PackedScene" uid="uid://bmexoacyhcuas" path="res://scenes/frog/frog.tscn" id="2_3pou7"]
+[ext_resource type="AudioStream" uid="uid://dwylwvs7xfrg2" path="res://assets/sounds/LudumDare56.wav" id="2_ldlwy"]
 [ext_resource type="Script" path="res://scenes/game/camera.gd" id="3_8kkee"]
 [ext_resource type="Script" path="res://scenes/game/level_boundaries.gd" id="5_lm6m2"]
+[ext_resource type="PackedScene" uid="uid://0kf4uekbmijd" path="res://scenes/fly_spawner/fly_spawner.tscn" id="6_gepjg"]
+[ext_resource type="PackedScene" uid="uid://isjh57n0mqat" path="res://scenes/ui/ui.tscn" id="7_mkkg8"]
+[ext_resource type="Script" path="res://scenes/game/round_timer.gd" id="9_qfwik"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58d31"]
 size = Vector2(20, 1000)
@@ -29,23 +33,43 @@ position = Vector2(0, -1000)
 position = Vector2(530, 879)
 
 [node name="LevelBoundaries" type="Node2D" parent="."]
+visible = false
 position = Vector2(500, 1000)
 script = ExtResource("5_lm6m2")
 
 [node name="Right" type="StaticBody2D" parent="LevelBoundaries"]
 position = Vector2(500, -500)
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBoundaries/Right"]
 shape = SubResource("RectangleShape2D_58d31")
 
 [node name="Left" type="StaticBody2D" parent="LevelBoundaries"]
 position = Vector2(-500, -500)
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBoundaries/Left"]
 shape = SubResource("RectangleShape2D_58d31")
 
 [node name="Top" type="StaticBody2D" parent="LevelBoundaries"]
 position = Vector2(0, -1000)
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBoundaries/Top"]
 shape = SubResource("RectangleShape2D_hx0ty")
+
+[node name="FlySpawner" parent="." instance=ExtResource("6_gepjg")]
+
+[node name="UI" parent="." instance=ExtResource("7_mkkg8")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ldlwy")
+volume_db = -15.164
+autoplay = true
+bus = &"Music"
+
+[node name="RoundTimer" type="Timer" parent="."]
+wait_time = 31.0
+script = ExtResource("9_qfwik")
+
+[connection signal="timeout" from="RoundTimer" to="RoundTimer" method="_on_timeout"]

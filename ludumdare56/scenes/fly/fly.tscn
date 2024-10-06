@@ -1,9 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://blda6v5qxadh2"]
+[gd_scene load_steps=4 format=3 uid="uid://blda6v5qxadh2"]
 
 [ext_resource type="Texture2D" uid="uid://ynp425mcj50" path="res://assets/fly/fly.png" id="1_2xn01"]
+[ext_resource type="Script" path="res://scenes/fly/fly.gd" id="1_8lxtc"]
 
-[node name="Fly" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmlrj"]
+size = Vector2(50, 50)
+
+[node name="Fly" type="StaticBody2D" groups=["creatures"]]
+collision_mask = 2
+script = ExtResource("1_8lxtc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(5, 5)
+z_index = 1
+scale = Vector2(4, 4)
 texture = ExtResource("1_2xn01")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_rmlrj")

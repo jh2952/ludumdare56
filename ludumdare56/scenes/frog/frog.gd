@@ -4,6 +4,7 @@ extends Node2D
 @onready var arrow_scene : PackedScene = preload("res://scenes/arrow/arrow.tscn")
 @onready var tongue_scene : PackedScene = preload("res://scenes/tongue/tongue.tscn")
 @onready var tongue_marker: Marker2D = $TongueRegionClip/TongueMarker
+@onready var frog_open: AudioStreamPlayer2D = $FrogOpen
 
 
 var tongue_node : Node2D
@@ -23,6 +24,7 @@ func _process(delta: float) -> void:
 		tongue_node = tongue_scene.instantiate()
 		tongue_node.rotation = arrow_node.rotation
 		tongue_marker.add_child(tongue_node)
+		frog_open.play()
 		SignalManager.tongue_shoot_start.emit()
 
 # Create arrow node

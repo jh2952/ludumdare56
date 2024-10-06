@@ -1,6 +1,10 @@
 extends Node
 
 signal transition_into_game
+signal transition_out_game
 signal start_game
+signal start_shop
+signal game_end
 signal tongue_shoot_start
 signal tongue_shoot_end
+signal creature_eaten

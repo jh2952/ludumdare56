@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmexoacyhcuas"]
+[gd_scene load_steps=4 format=3 uid="uid://bmexoacyhcuas"]
 
 [ext_resource type="SpriteFrames" uid="uid://ctb1sh7u2g5xf" path="res://assets/frog/frog_sprite_frames.tres" id="1_8q304"]
 [ext_resource type="Script" path="res://scenes/frog/frog.gd" id="1_l7p2m"]
+[ext_resource type="AudioStream" uid="uid://b35eedjvi7b5l" path="res://assets/sounds/frog_open.wav" id="3_e3mdt"]
 
 [node name="frog" type="Node2D"]
 script = ExtResource("1_l7p2m")
@@ -23,3 +24,6 @@ offset_bottom = 12.0
 
 [node name="TongueMarker" type="Marker2D" parent="TongueRegionClip"]
 position = Vector2(691, 1165)
+
+[node name="FrogOpen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_e3mdt")
