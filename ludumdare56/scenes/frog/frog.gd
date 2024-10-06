@@ -52,6 +52,8 @@ func _take_damage(body : Node2D) -> void:
 	SignalManager.take_damage.emit()
 	if GameManager.player_health <= 0:
 		SignalManager.transition_out_game.emit()
+		if GameManager.player_score > GameManager.high_score:
+			GameManager.high_score = GameManager.player_score
 		GameManager.player_score = GameManager.k_start_score
 		GameManager.player_health = GameManager.k_start_health
 

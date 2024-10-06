@@ -5,6 +5,7 @@ const k_start_health = 3.0
 const k_start_fly_spawn_time = 5.0
 const k_start_dragonfly_spawn_time = 5.0
 
+var high_score = 0
 var player_score = 0
 var player_health = 3
 

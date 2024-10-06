@@ -1,9 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://do2sybo3i0uxa"]
+[gd_scene load_steps=9 format=3 uid="uid://do2sybo3i0uxa"]
 
 [ext_resource type="Texture2D" uid="uid://dmp4tip5ck87k" path="res://assets/arrow/arrow.png" id="1_boejc"]
 [ext_resource type="Script" path="res://scenes/arrow/arrow.gd" id="1_ua2wf"]
 [ext_resource type="Texture2D" uid="uid://cjdka2i476sk7" path="res://assets/keys/left.png" id="3_ii23t"]
 [ext_resource type="Texture2D" uid="uid://bkwuejqk2hd0u" path="res://assets/keys/right.png" id="4_xsl1h"]
+[ext_resource type="Texture2D" uid="uid://dwl0lcf8c3q6v" path="res://assets/keys/space.png" id="5_gskvv"]
+
+[sub_resource type="Animation" id="Animation_d5qfi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Left:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_a8pev"]
 resource_name = "flash_keys"
@@ -33,21 +49,6 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_d5qfi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/Left:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yui78"]
 _data = {
 "RESET": SubResource("Animation_d5qfi"),
@@ -72,6 +73,12 @@ visible = false
 modulate = Color(1, 1, 1, 0.974961)
 position = Vector2(40, 0)
 texture = ExtResource("4_xsl1h")
+
+[node name="Space" type="Sprite2D" parent="Sprite2D"]
+visible = false
+position = Vector2(0, -20)
+scale = Vector2(1.5, 1)
+texture = ExtResource("5_gskvv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
