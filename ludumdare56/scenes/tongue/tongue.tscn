@@ -28,6 +28,6 @@ position = Vector2(0, -47)
 shape = SubResource("RectangleShape2D_u28dd")
 
 [node name="TipMarker" type="Marker2D" parent="TongueTip"]
-position = Vector2(0, -50)
+position = Vector2(0, -57)
 
 [connection signal="body_entered" from="TongueTip" to="." method="_on_tongue_tip_body_entered"]

@@ -11,3 +11,5 @@ enum
 }
 
 var current_state = STATE_START
+
+static var is_fly_audio_playing = false

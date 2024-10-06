@@ -31,8 +31,14 @@ func _on_tongue_tip_body_entered(body: Node2D) -> void:
 	is_shooting = false
 	if body.is_in_group("creatures") and not current_creature:
 		current_creature = body
+		call_deferred("_disable_creature", current_creature)
 		pass
 
 func move_creature() -> void:
 	current_creature.position = tip_marker.global_position
 	print("Current Creature Position: ", current_creature.position)
+
+func _disable_creature(body : Node2D) -> void:
+	body.set_process(false)
+	var creature_collision_shape = body.get_node("CollisionShape2D") as CollisionShape2D
+	creature_collision_shape.disabled = true

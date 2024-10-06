@@ -2,51 +2,25 @@
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_cy57r"]
 [ext_resource type="FontFile" uid="uid://ddgq8ngj4p1si" path="res://assets/font/antiquity-print.ttf" id="2_ufy1g"]
+[ext_resource type="PackedScene" uid="uid://dyj6wjve8auqv" path="res://scenes/hearts/heart_gui.tscn" id="3_22kx4"]
 
 [sub_resource type="Theme" id="Theme_6lkgv"]
 default_font = ExtResource("2_ufy1g")
 
-[sub_resource type="Theme" id="Theme_6jkyq"]
-default_font = ExtResource("2_ufy1g")
-
 [sub_resource type="Animation" id="Animation_lsv2b"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/Score:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_aml82"]
 resource_name = "fade_in"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/Score:modulate")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 2.82843),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/Timer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 2.82843),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
@@ -56,22 +30,10 @@ resource_name = "fade_out"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/Score:modulate")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/Score:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -98,12 +60,13 @@ script = ExtResource("1_cy57r")
 layout_mode = 0
 offset_right = 1000.0
 offset_bottom = 1000.0
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
 [node name="Score" type="Label" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 theme = SubResource("Theme_6lkgv")
@@ -113,15 +76,20 @@ theme_override_fonts/font = ExtResource("2_ufy1g")
 theme_override_font_sizes/font_size = 50
 text = "score :"
 
-[node name="Timer" type="Label" parent="MarginContainer"]
-modulate = Color(1, 1, 1, 0)
+[node name="HeartsContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = SubResource("Theme_6jkyq")
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 50
-text = "time:"
+theme_override_constants/separation = 35
+
+[node name="HeartGUI" parent="MarginContainer/HeartsContainer" instance=ExtResource("3_22kx4")]
+layout_mode = 2
+
+[node name="HeartGUI2" parent="MarginContainer/HeartsContainer" instance=ExtResource("3_22kx4")]
+layout_mode = 2
+
+[node name="HeartGUI3" parent="MarginContainer/HeartsContainer" instance=ExtResource("3_22kx4")]
+layout_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -8,3 +8,4 @@ signal game_end
 signal tongue_shoot_start
 signal tongue_shoot_end
 signal creature_eaten
+signal take_damage

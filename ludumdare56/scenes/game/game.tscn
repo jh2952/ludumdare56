@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7r7h4britdhm"]
+[gd_scene load_steps=14 format=3 uid="uid://c7r7h4britdhm"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_ditco"]
 [ext_resource type="PackedScene" uid="uid://b7tt64bvrk1f4" path="res://scenes/level/level.tscn" id="1_on66x"]
@@ -7,8 +7,10 @@
 [ext_resource type="Script" path="res://scenes/game/camera.gd" id="3_8kkee"]
 [ext_resource type="Script" path="res://scenes/game/level_boundaries.gd" id="5_lm6m2"]
 [ext_resource type="PackedScene" uid="uid://0kf4uekbmijd" path="res://scenes/fly_spawner/fly_spawner.tscn" id="6_gepjg"]
+[ext_resource type="PackedScene" uid="uid://b0wwvgj4w1ivy" path="res://scenes/dragonfly_spawner/dragonfly_spawner.tscn" id="7_jvncr"]
 [ext_resource type="PackedScene" uid="uid://isjh57n0mqat" path="res://scenes/ui/ui.tscn" id="7_mkkg8"]
-[ext_resource type="Script" path="res://scenes/game/round_timer.gd" id="9_qfwik"]
+[ext_resource type="Script" path="res://scenes/game/dragonfly_timer.gd" id="10_mw47u"]
+[ext_resource type="Script" path="res://scenes/game/difficulty_timer.gd" id="11_v3dd6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58d31"]
 size = Vector2(20, 1000)
@@ -60,6 +62,8 @@ shape = SubResource("RectangleShape2D_hx0ty")
 
 [node name="FlySpawner" parent="." instance=ExtResource("6_gepjg")]
 
+[node name="DragonflySpawner" parent="." instance=ExtResource("7_jvncr")]
+
 [node name="UI" parent="." instance=ExtResource("7_mkkg8")]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
@@ -68,8 +72,12 @@ volume_db = -15.164
 autoplay = true
 bus = &"Music"
 
-[node name="RoundTimer" type="Timer" parent="."]
-wait_time = 31.0
-script = ExtResource("9_qfwik")
+[node name="DragonflyTimer" type="Timer" parent="."]
+one_shot = true
+script = ExtResource("10_mw47u")
 
-[connection signal="timeout" from="RoundTimer" to="RoundTimer" method="_on_timeout"]
+[node name="DifficultyTimer" type="Timer" parent="."]
+wait_time = 20.0
+script = ExtResource("11_v3dd6")
+
+[connection signal="timeout" from="DragonflyTimer" to="DragonflySpawner" method="_on_dragonfly_timer_timeout"]

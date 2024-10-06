@@ -30,3 +30,6 @@ func _on_transition_out() -> void:
 	for child in get_children():
 		if child.is_in_group("creatures"):
 			child.queue_free()
+
+func set_spawn_wait_time(time : float) -> void:
+	spawn_timer.set_wait_time(time)

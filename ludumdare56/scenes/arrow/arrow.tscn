@@ -1,7 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://do2sybo3i0uxa"]
+[gd_scene load_steps=8 format=3 uid="uid://do2sybo3i0uxa"]
 
 [ext_resource type="Texture2D" uid="uid://dmp4tip5ck87k" path="res://assets/arrow/arrow.png" id="1_boejc"]
 [ext_resource type="Script" path="res://scenes/arrow/arrow.gd" id="1_ua2wf"]
+[ext_resource type="Texture2D" uid="uid://cjdka2i476sk7" path="res://assets/keys/left.png" id="3_ii23t"]
+[ext_resource type="Texture2D" uid="uid://bkwuejqk2hd0u" path="res://assets/keys/right.png" id="4_xsl1h"]
+
+[sub_resource type="Animation" id="Animation_a8pev"]
+resource_name = "flash_keys"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Left:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Right:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d5qfi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Left:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yui78"]
+_data = {
+"RESET": SubResource("Animation_d5qfi"),
+"flash_keys": SubResource("Animation_a8pev")
+}
 
 [node name="Arrow" type="Node2D"]
 script = ExtResource("1_ua2wf")
@@ -10,3 +61,20 @@ script = ExtResource("1_ua2wf")
 position = Vector2(0, -80)
 scale = Vector2(2, 2)
 texture = ExtResource("1_boejc")
+
+[node name="Left" type="Sprite2D" parent="Sprite2D"]
+visible = false
+position = Vector2(-40, 0)
+texture = ExtResource("3_ii23t")
+
+[node name="Right" type="Sprite2D" parent="Sprite2D"]
+visible = false
+modulate = Color(1, 1, 1, 0.974961)
+position = Vector2(40, 0)
+texture = ExtResource("4_xsl1h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yui78")
+}
+autoplay = "flash_keys"

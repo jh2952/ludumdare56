@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxk7a2p4jymuj"]
+[gd_scene load_steps=9 format=3 uid="uid://cxk7a2p4jymuj"]
 
 [ext_resource type="Script" path="res://scenes/title_screen/title_screen.gd" id="1_sy0yr"]
 [ext_resource type="Texture2D" uid="uid://ca7ma8xl3yclr" path="res://assets/title/title.png" id="1_sytxj"]
 [ext_resource type="Texture2D" uid="uid://bc3ala1cjm5fi" path="res://assets/title/space_to_start.png" id="2_fv0fs"]
+[ext_resource type="FontFile" uid="uid://ddgq8ngj4p1si" path="res://assets/font/antiquity-print.ttf" id="4_ghmvm"]
+
+[sub_resource type="Theme" id="Theme_pjhc4"]
+default_font = ExtResource("4_ghmvm")
 
 [sub_resource type="Animation" id="Animation_qmfof"]
 length = 0.001
@@ -80,13 +84,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_fv0fs")
 
+[node name="HighScore" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = SubResource("Theme_pjhc4")
+
 [node name="TooltipFlasher" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_xtl86")
 }
 autoplay = "flash"
-
-[node name="DespawnTimer" type="Timer" parent="."]
-wait_time = 2.0
-
-[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

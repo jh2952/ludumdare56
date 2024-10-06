@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://d35gkv4ismodg"]
+
+[ext_resource type="Script" path="res://scenes/dragonfly/dragonfly.gd" id="1_cixdl"]
+[ext_resource type="Texture2D" uid="uid://cpuk2i1jm5h8a" path="res://assets/dragonfly/dragonfly.png" id="1_vdy66"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kws1"]
+atlas = ExtResource("1_vdy66")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_corov"]
+atlas = ExtResource("1_vdy66")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_172h5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kws1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_corov")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obnkm"]
+
+[node name="Dragonfly" type="CharacterBody2D" groups=["creatures"]]
+script = ExtResource("1_cixdl")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_172h5")
+frame_progress = 0.250607
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.5, 3.5)
+shape = SubResource("RectangleShape2D_obnkm")
